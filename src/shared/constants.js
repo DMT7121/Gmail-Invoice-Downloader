@@ -65,3 +65,17 @@ export const INVOICE_PATTERNS = [
   /([A-Z0-9]{1,4}\d{2}[A-Z]{2,4}[\-_]\d{4,})/,
   /(\d{7,})/,
 ];
+
+// Licensing & Admin
+export const ADMIN_EMAIL = 'your-admin@email.com'; // CHỈNH SỬA TẠI ĐÂY
+
+// Cấu hình Firebase - Bạn cần tạo Project trên Firebase Console và lấy thông tin tại đây
+export const FIREBASE_CONFIG = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+

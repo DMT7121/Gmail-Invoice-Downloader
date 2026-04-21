@@ -2,7 +2,7 @@
 // Header.jsx — App header with brand, user info, navigation
 // ============================================================
 
-export default function Header({ email, currentPage, navigate, onLogout }) {
+export default function Header({ email, currentPage, navigate, onLogout, isAdmin }) {
   return (
     <header className="header">
       <div className="header-brand">
@@ -12,7 +12,7 @@ export default function Header({ email, currentPage, navigate, onLogout }) {
         </div>
       </div>
 
-      <nav className="nav-tabs" style={{ flex: '0 0 auto', maxWidth: '200px' }}>
+      <nav className="nav-tabs">
         <button
           className={`nav-tab ${currentPage === 'dashboard' ? 'active' : ''}`}
           onClick={() => navigate('dashboard')}
@@ -25,7 +25,16 @@ export default function Header({ email, currentPage, navigate, onLogout }) {
         >
           📋 Lịch sử
         </button>
+        {isAdmin && (
+          <button
+            className={`nav-tab ${currentPage === 'admin' ? 'active' : ''}`}
+            onClick={() => navigate('admin')}
+          >
+            ⚙️ Admin
+          </button>
+        )}
       </nav>
+
 
       <div className="header-user">
         <span className="header-email" title={email}>{email}</span>

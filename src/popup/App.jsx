@@ -9,18 +9,25 @@ import LoginPage from './pages/LoginPage.jsx';
 import DashboardPage from './pages/DashboardPage.jsx';
 import ResultsPage from './pages/ResultsPage.jsx';
 import HistoryPage from './pages/HistoryPage.jsx';
+import { useLicense } from './hooks/useLicense.js';
+import { AccessPendingPage } from './pages/AccessPendingPage.jsx';
+import { AdminPage } from './pages/AdminPage.jsx';
+
 
 export default function App() {
-  const auth = useAuth();
   const [currentPage, setCurrentPage] = useState('dashboard');
   const [scanData, setScanData] = useState(null);
+  const auth = useAuth();
+  const license = useLicense(auth.email);
 
-  // Show loading while checking auth
-  if (auth.loading && !auth.isLoggedIn) {
+
+  // Show loading while checking auth or license
+  if ((auth.loading && !auth.isLoggedIn) || (auth.isLoggedIn && license.licenseStatus === 'loading')) {
     return (
       <div className="app">
         <div className="login-page">
           <div className="spinner spinner-lg"></div>
+          {auth.isLoggedIn && <p style={{ marginTop: '10px', fontSize: '12px' }}>Đang kiểm tra quyền truy cập...</p>}
         </div>
       </div>
     );
@@ -34,6 +41,16 @@ export default function App() {
       </div>
     );
   }
+
+  // Show pending/blocked screen if not active
+  if (license.licenseStatus === 'pending' || license.licenseStatus === 'blocked') {
+    return (
+      <div className="app">
+        <AccessPendingPage email={auth.email} status={license.licenseStatus} />
+      </div>
+    );
+  }
+
 
   // Navigate handler
   const navigate = (page, data = null) => {
@@ -50,10 +67,13 @@ export default function App() {
         return <ResultsPage scanData={scanData} navigate={navigate} />;
       case 'history':
         return <HistoryPage navigate={navigate} />;
+      case 'admin':
+        return license.isAdmin ? <AdminPage licenseProps={license} /> : <DashboardPage navigate={navigate} />;
       default:
         return <DashboardPage navigate={navigate} />;
     }
   };
+
 
   return (
     <div className="app">
@@ -62,7 +82,9 @@ export default function App() {
         currentPage={currentPage}
         navigate={navigate}
         onLogout={auth.logout}
+        isAdmin={license.isAdmin}
       />
+
       <div className="app-content">
         {renderPage()}
       </div>
