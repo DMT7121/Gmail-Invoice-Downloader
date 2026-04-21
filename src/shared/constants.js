@@ -67,7 +67,7 @@ export const INVOICE_PATTERNS = [
 ];
 
 // Licensing & Admin
-export const ADMIN_EMAIL = 'your-admin@email.com'; // CHỈNH SỬA TẠI ĐÂY
+export const ADMIN_EMAIL = 'dmt.kgwork@email.com'; // CHỈNH SỬA TẠI ĐÂY
 
 // Cấu hình Firebase - Đã được tự động thiết lập
 export const FIREBASE_CONFIG = {

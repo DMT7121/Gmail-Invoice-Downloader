@@ -33,8 +33,27 @@ export default function App() {
     );
   }
 
+  // Show error if license check failed
+  if (license.licenseStatus === 'error') {
+    return (
+      <div className="app" style={{ padding: '20px', textAlign: 'center' }}>
+        <div style={{ fontSize: '40px' }}>❌</div>
+        <h2>Lỗi kết nối hệ thống</h2>
+        <p style={{ color: '#ef4444', fontSize: '13px' }}>{license.error}</p>
+        <button 
+          className="btn btn-primary" 
+          onClick={() => window.location.reload()}
+          style={{ marginTop: '20px' }}
+        >
+          Thử lại
+        </button>
+      </div>
+    );
+  }
+
   // Show login if not authenticated
   if (!auth.isLoggedIn) {
+
     return (
       <div className="app">
         <LoginPage auth={auth} />

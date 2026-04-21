@@ -24,6 +24,11 @@
     "downloads",
     "offscreen"
   ],
+  "host_permissions": [
+    "https://*.googleapis.com/*",
+    "https://*.firebaseio.com/*"
+  ],
+
 
   "oauth2": {
     "client_id": "794880324306-fmehd6fcg5c3uj0njnlh0bb495h887a0.apps.googleusercontent.com",
