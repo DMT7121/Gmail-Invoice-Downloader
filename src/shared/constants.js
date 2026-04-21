@@ -69,13 +69,15 @@ export const INVOICE_PATTERNS = [
 // Licensing & Admin
 export const ADMIN_EMAIL = 'your-admin@email.com'; // CHỈNH SỬA TẠI ĐÂY
 
-// Cấu hình Firebase - Bạn cần tạo Project trên Firebase Console và lấy thông tin tại đây
+// Cấu hình Firebase - Đã được tự động thiết lập
 export const FIREBASE_CONFIG = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyANQvzNj4PB1_uwNLMTDUqXFjfHTyzVWfI",
+  authDomain: "invoice-downloader-eda22.firebaseapp.com",
+  projectId: "invoice-downloader-eda22",
+  storageBucket: "invoice-downloader-eda22.firebasestorage.app",
+  messagingSenderId: "1077638195559",
+  appId: "1:1077638195559:web:9e00a71f00709fdb7127c2",
+  measurementId: "G-13JYPZ9BWN"
 };
+
 
