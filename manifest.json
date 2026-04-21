@@ -1,9 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Gmail Invoice Downloader",
-  "description": "Tự động quét, trích xuất và tải hàng loạt hóa đơn đầu vào từ Gmail",
-  "version": "1.0.0",
-
+  "description": "Tự động quét, trích xuất và tải hàng loại hóa đơn từ Gmail",
+  "version": "1.0.1",
   "action": {
     "default_popup": "index.html",
     "default_icon": {
@@ -12,12 +11,10 @@
       "128": "public/icons/icon-128.png"
     }
   },
-
   "background": {
     "service_worker": "src/background/index.js",
     "type": "module"
   },
-
   "permissions": [
     "identity",
     "storage",
@@ -28,18 +25,18 @@
     "https://*.googleapis.com/*",
     "https://*.firebaseio.com/*"
   ],
-
-
   "oauth2": {
     "client_id": "794880324306-fmehd6fcg5c3uj0njnlh0bb495h887a0.apps.googleusercontent.com",
     "scopes": [
       "https://www.googleapis.com/auth/gmail.readonly"
     ]
   },
-
   "icons": {
     "16": "public/icons/icon-16.png",
     "48": "public/icons/icon-48.png",
     "128": "public/icons/icon-128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
   }
 }
